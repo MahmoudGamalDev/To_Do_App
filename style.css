@@ -1,0 +1,54 @@
+.form {
+  width: 20rem;
+  margin: 40px auto 20px;
+  text-align: center;
+  background-color: #eee;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+input[type="text"] {
+  flex: 1;
+  display: block;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+input[type="submit"] {
+  outline: none;
+  border: none;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.task-holder {
+    background-color: #eee;
+    width: 20rem;
+    padding: 20px;
+    margin: auto;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
