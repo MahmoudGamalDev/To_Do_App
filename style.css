@@ -1,5 +1,9 @@
+body {
+    background-color: #333;
+  }  
+
 .form {
-  width: 20rem;
+  width: 25rem;
   margin: 40px auto 20px;
   text-align: center;
   background-color: #eee;
@@ -41,14 +45,53 @@ input[type="submit"] {
   -o-border-radius: 4px;
 }
 
-.task-holder {
-    background-color: #eee;
-    width: 20rem;
-    padding: 20px;
-    margin: auto;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
+.tasks-holder {
+  background-color: #eee;
+  width: 25rem;
+  padding: 20px;
+  margin: auto;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.task {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.done,
+.delete {
+  outline: none;
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.done {
+  background-color: limegreen;
+  margin-right: 5px;
+}
+
+.complete {
+  opacity: 0.5;
 }
