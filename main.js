@@ -42,6 +42,7 @@ if (window.localStorage.getItem("tasks")) {
 add.onclick = () => {
   if (task.value !== "") {
     addTaskToArray(task.value);
+    // Clear field
     task.value = "";
   }
 };
