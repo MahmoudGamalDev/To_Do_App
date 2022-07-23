@@ -3,11 +3,11 @@ const add = document.querySelector(".add");
 const tasksHolder = document.querySelector(".tasks-holder");
 let tasksArray = [];
 
-
-let createTask = (taskText) => {
+let createTask = (taskText, id) => {
   // Adding the task to page
   let MainDiv = document.createElement("div");
   MainDiv.className = "task";
+  MainDiv.id = id;
 
   let taskContent = document.createElement("div");
   taskContent.className = "task-content";
@@ -30,12 +30,11 @@ let createTask = (taskText) => {
   tasksHolder.appendChild(MainDiv);
 };
 
-
 if (window.localStorage.getItem("tasks")) {
   tasksArray = JSON.parse(window.localStorage.getItem("tasks"));
 
   for (let i = 0; i < tasksArray.length; i++) {
-    createTask(tasksArray[i].taskName)
+    createTask(tasksArray[i].taskName, tasksArray[i].id);
   }
 }
 
@@ -47,21 +46,29 @@ add.onclick = () => {
   }
 };
 
+tasksHolder.onclick = function (e) {
+  if (e.target.classList.contains("delete")) {
+    // Delete from page
+    e.target.parentElement.parentElement.remove();
+    // Delete from array
+    tasksArray = tasksArray.filter((ele) => {
+      return ele.id != e.target.parentElement.parentElement.id;
+    });
+    // Updating localStorage
+    window.localStorage.setItem("tasks", JSON.stringify(tasksArray));
+
+    
+  }
+};
+
 let addTaskToArray = (taskText) => {
   let newTask = {
     id: Date.now(),
     taskName: taskText,
     completed: false,
   };
+
+  createTask(newTask.taskName, newTask.id);
   tasksArray.push(newTask);
-
-  createTask(newTask.taskName);
-  addTasksArrayToLocalStorage("tasks", JSON.stringify(tasksArray));
-};
-
-
-console.log(tasksArray);
-
-let addTasksArrayToLocalStorage = (key, value) => {
-  window.localStorage.setItem(key, value);
+  window.localStorage.setItem("tasks", JSON.stringify(tasksArray));
 };
