@@ -1,10 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    background-color: #333;
-  }  
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 40%;
+  margin: auto;
+  text-align: center;
+}
 
 .form {
-  width: 25rem;
-  margin: 40px auto 20px;
+  width: 100%;
+  margin: 2rem auto 20px;
   text-align: center;
   background-color: #eee;
   padding: 20px;
@@ -46,8 +57,8 @@ input[type="submit"] {
 }
 
 .tasks-holder {
-  background-color: #eee;
-  width: 25rem;
+  background-color: #575353;
+  width: 100%;
   padding: 20px;
   margin: auto;
   border-radius: 4px;
@@ -62,9 +73,10 @@ input[type="submit"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: 12px;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-weight: bold;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -79,7 +91,7 @@ input[type="submit"] {
   background-color: red;
   color: white;
   cursor: pointer;
-  padding: 5px;
+  padding: 10px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -89,9 +101,15 @@ input[type="submit"] {
 
 .done {
   background-color: limegreen;
-  margin-right: 5px;
+  margin-right: 7px;
 }
 
-.complete {
+.completed {
   opacity: 0.5;
+}
+
+@media (max-width: 991px) {
+  .container {
+    width: 95%;
+  }
 }

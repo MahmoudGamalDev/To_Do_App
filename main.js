@@ -3,7 +3,7 @@ const add = document.querySelector(".add");
 const tasksHolder = document.querySelector(".tasks-holder");
 let tasksArray = [];
 
-let createTask = (taskText, id) => {
+let createTask = (taskText, id, completed) => {
   // Adding the task to page
   let MainDiv = document.createElement("div");
   MainDiv.className = "task";
@@ -27,6 +27,10 @@ let createTask = (taskText, id) => {
   MainDiv.appendChild(taskContent);
   MainDiv.appendChild(buttons);
 
+  if (completed == true) {
+    MainDiv.classList.add("completed");
+  }
+
   tasksHolder.appendChild(MainDiv);
 };
 
@@ -34,7 +38,11 @@ if (window.localStorage.getItem("tasks")) {
   tasksArray = JSON.parse(window.localStorage.getItem("tasks"));
 
   for (let i = 0; i < tasksArray.length; i++) {
-    createTask(tasksArray[i].taskName, tasksArray[i].id);
+    createTask(
+      tasksArray[i].taskName,
+      tasksArray[i].id,
+      tasksArray[i].completed
+    );
   }
 }
 
@@ -56,9 +64,27 @@ tasksHolder.onclick = function (e) {
     });
     // Updating localStorage
     window.localStorage.setItem("tasks", JSON.stringify(tasksArray));
-
-    
   }
+
+  if (e.target.classList.contains("done")) {
+    e.target.parentElement.parentElement.classList.toggle("completed");
+
+    if (e.target.parentElement.parentElement.classList.contains("completed")) {
+      for (let i = 0; i < tasksArray.length; i++) {
+        if (tasksArray[i].id == e.target.parentElement.parentElement.id) {
+          tasksArray[i].completed = true;
+        }
+      }
+    } else {
+      for (let i = 0; i < tasksArray.length; i++) {
+        if (tasksArray[i].id == e.target.parentElement.parentElement.id) {
+          tasksArray[i].completed = false;
+        }
+      }
+    }
+  }
+
+  window.localStorage.setItem("tasks", JSON.stringify(tasksArray));
 };
 
 let addTaskToArray = (taskText) => {
@@ -68,7 +94,7 @@ let addTaskToArray = (taskText) => {
     completed: false,
   };
 
-  createTask(newTask.taskName, newTask.id);
+  createTask(newTask.taskName, newTask.id, newTask.completed);
   tasksArray.push(newTask);
   window.localStorage.setItem("tasks", JSON.stringify(tasksArray));
 };
